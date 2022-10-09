@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="500" height="500" 
+xmlns="http://www.w3.org/2000/svg">
+
+<line x1="10" y1="140" x2="10" y2="300" style="stroke:black;stroke-width:2"/>
+<line x1="10" y1="300" x2="240" y2="300" style="stroke:black;stroke-width:2"/>
+<rect x="30" y="279" width="30" height="20" style="fill:orange;"/>
+<rect x="80" y="259" width="30" height="40" style="fill:orange;"/>
+<rect x="130" y="239" width="30" height="60" style="fill:orange;"/>
+<rect x="180" y="179" width="30" height="120" style="fill:orange;"/>
+
+</svg>
