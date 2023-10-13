@@ -1,27 +1,14 @@
-DISPLAY DECIMAL OUTPUT TO A SPECIFIC DECIMAL SPACE
-cout.setf(ios::fixed)
-cout.setf(ios::showpoint)
-cout.precision(x)             //'x' represents the number of decimal spaces.
-
-Example:
-2.3452342 is displayed as 2.34 when 'x' is 2. That is,
-cout.setf(ios::fixed)
-cout.setf(ios::showpoint)
-cout.precision(2)
-
-
 SQUARE ROOT and EXPONENTS FUNCTION
-//Requires <cmath> library!
+//Library <cmath>
 //Takes arguments of type 'double.'
 sqrt(x) = value   //Replace x with input.
-
 pow(x,y) = value  //x is the number, and y is the power. 
 
 
-ABSOLUTE VALUE FUNCTIONS FOR INT AND LONG
-//Requires <cstdlib> library!
-abs(x) = value      //Use this for type 'int' and replace x with input.
-labs(x) = value     //Use this for type 'long' and replace x with input.
+ABSOLUTE VALUE FUNCTIONS FOR INT and LONG
+//Library <cstdlib>
+abs(x) = value      //Use this for type 'int'.
+labs(x) = value     //Use this for type 'long'.
 Examples:
 abs(-4) = 4
 abs(4) = 4
@@ -30,17 +17,17 @@ labs(40023) = 40023
 
 
 ABSOLUTE VALUE FUNCTIONS FOR DOUBLE
-//Requires <cmath> library!
-fabs(x) = value     //Replace x with input.
+//Library <cmath>
+fabs(x) = value    //Replace x with input.
 Examples:
 fabs(-324.76723) = 324.76723
 fabs(4.5) = 4.5
 
 
 ROUND-UP and ROUND-DOWN FUNCTIONS
-//Requires <cmath> library!
-floor(x) = round-down value      //Replace x with input. This function rounds down the input.
-ceil(x) = round-up value         //Replace x with input. This function rounds up the input.
+//Library <cmath>
+floor(x) = round-down value
+ceil(x) = round-up value
 Examples:
 floor(5.9) = 5
 floor(4.2) = 4
@@ -49,25 +36,25 @@ ceil(4.1) = 5
 
 
 RANDOM NUMBER GENERATION
-//Requires <ctime> and <cstdlib> library!
-//Put the following code in body.
-//Use srand function only once.
+//Library <ctime> and <cstdlib>
+//Put the following code in body: srand (time(0));
+//Function srand used only once.
 
 srand (time(0));
 int variable = (rand() % 6) + 1;
 
 //The variable expression generates random number from 0  to 5.
 //Replace 6 with any number 'n' to generate a random number from 0 to (n - 1).
-//Don't place both srand and rand in a loop. Generate srand only once. Generate rand
-//when and you need a random number.
+//Don't place both srand and rand in a loop. Generate srand only once. 
+//Generate rand when and you need a random number.
 
 
 TYPE CASTING
 //Converts 'int' type to 'double' type and vice-versa.
-
-//Formula:
+Formula:
 int variable = static_cast<int>(double);
 double variable = static_cast<double>(int);
+
 Examples:
 double change;
 int variable = static_cast<int>(change);
@@ -97,7 +84,7 @@ and outStream as variables.
 The object's class determines which member functions the object has.
 
 
-DEBUNKING DECIMAL FORMULA (THE FIRST ONE MENTIONED IN THIS FILE)
+DEBUNKING DECIMAL FORMULA
 cout.setf(ios::fixed)
 cout.setf(ios::showpoint)
 
@@ -111,14 +98,19 @@ The flag 'ios::showpoint' displays the decimal point of the number.
 The word 'flag' is used for something that can be turned on or off.
 
 
-FIXED-POINT AND FLOATING-POINT NOTATION
-Type 'int' numbers are fixed-point notation.
-Type 'double' numbers are floating-point notation.
-Just a fancy way of calling them, that's all.
+DISPLAY DECIMAL OUTPUT TO A SPECIFIC DECIMAL SPACE
+cout.setf(ios::fixed)
+cout.setf(ios::showpoint)
+cout.precision(x)             //'x' represents the number of decimal spaces.
+For Example:
+2.3452342 is displayed as 2.34 when 'x' is 2. That is,
+cout.setf(ios::fixed)
+cout.setf(ios::showpoint)
+cout.precision(2)
 
 
 MANIPULATORS
-//Requires <iomanip> library!
+//Library <iomanip>
 These are functions used after insertion operator <<.
 For example: endl, setw, setprecision.
 setw is just like 'width' member function but is used after <<.
@@ -136,28 +128,22 @@ Example:
 	50.40000
 
 
-TO UPPERCASE/LOWERCASE
-//Requires <cctype> library!
+FUNCTIONS OF <cctype> LIBRARY
+//Must be type "char"
 toupper('a') = 'A';
 tolower('A') = 'a';
-
-
-FUNCTIONS OF <cctype> LIBRARY
-All must be characters.
-toupper
-tolower
-isupper:	returns true if uppercase	isupper('a') is false	isupper('A') is true
-islower:	returns true if lowercase	islower('A') is false 	islower('a') is true
-isalpha:	returns true if alphabet	isalpha('$') is false 	isalpha('h') is true
-isdigit:	returns true if digit		isdigit('a') is false	isdigit('2') is true
-isspace: 	returns true if whitespace 	isspace('4') is false 	isspace(' ') is true 	isspace('\n') is true	isspace('\t') is true
+isupper:  returns true if uppercase   isupper('a') is false	 isupper('A') is true
+islower:  returns true if lowercase   islower('A') is false	 islower('a') is true
+isalpha:  returns true if alphabet    isalpha('$') is false	 isalpha('h') is true
+isdigit:  returns true if digit	      isdigit('a') is false	 isdigit('2') is true
+isspace:  returns true if whitespace  isspace('4') is false	 isspace(' ') is true 	
+								      isspace('\n') is true	 isspace('\t') is true
 
 
 EXIT FUNCTION
-//Requires <cstdlib> library!
-Used with argument 0 or 1.
+//Library <cstdlib>
+Argument either 0 or 1.
 exit (0); 	Exits program and prompts for closing.
 exit (1); 	Exits the program immediately.
 'exit (1)' is used for errors and 'exit (0)' for all other reasons.
-The integers should be in brackets!
-
+Parenthesis Necessary!
