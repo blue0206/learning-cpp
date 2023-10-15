@@ -1,38 +1,112 @@
-SQUARE ROOT and EXPONENTS FUNCTION
-//Library <cmath>
-//Takes arguments of type 'double.'
-sqrt(x) = value   //Replace x with input.
-pow(x,y) = value  //x is the number, and y is the power. 
+DATA TYPES
+short
+int
+long
+float
+double
+long double
+char - can hold any character.
+bool - true or false.
 
 
-ABSOLUTE VALUE FUNCTIONS FOR INT and LONG
-//Library <cstdlib>
-abs(x) = value      //Use this for type 'int'.
-labs(x) = value     //Use this for type 'long'.
+ESCAPE SEQUENCES (\)
+\n - new line.
+\t - tab.
+\a - alert.
+\\ - backslash(\).
+single/double quote inside quote - \' or \".
+R" " - if there are many backslash(\) in a string.
+
+
+TYPE CASTING
+//Converts 'int' to 'double' and vice-versa.
+Formula:
+int variable = static_cast<int>(double);
+double variable = static_cast<double>(int);
+
 Examples:
-abs(-4) = 4
-abs(4) = 4
-labs(-40023) = 40023
-labs(40023) = 40023
+double change;
+int variable = static_cast<int>(change);
+//Puts the value of 'change' in 'variable' and converts its type to 'int.'
+
+int change;
+double variable = static_cast<double>(change);
+//Puts the value of 'change' in 'variable' and converts its type to 'double.'
 
 
-ABSOLUTE VALUE FUNCTIONS FOR DOUBLE
-//Library <cmath>
-fabs(x) = value    //Replace x with input.
-Examples:
-fabs(-324.76723) = 324.76723
-fabs(4.5) = 4.5
+DEBUNKING DECIMAL FORMULA
+cout.setf(ios::fixed)
+cout.setf(ios::showpoint)
+
+Here, 'setf' means 'set flags.'
+A 'flag' is an instruction to do something in one of TWO possible ways.
+If a flag is given as an argument to setf, then the flag tells the computer to
+write output to that stream in some specific way. 
+The flag 'ios::fixed' displays number in fixed-point notation.
+The flag 'ios::showpoint' displays the decimal point of the number.
+The word 'flag' is used for something that can be turned on or off.
 
 
-ROUND-UP and ROUND-DOWN FUNCTIONS
-//Library <cmath>
-floor(x) = round-down value
-ceil(x) = round-up value
-Examples:
-floor(5.9) = 5
-floor(4.2) = 4
-ceil(5.9) = 6
-ceil(4.1) = 5
+DISPLAY DECIMAL OUTPUT TO A SPECIFIC DECIMAL SPACE
+cout.setf(ios::fixed)
+cout.setf(ios::showpoint)
+cout.precision(x)             //'x' represents the number of decimal spaces.
+For Example:
+2.3452342 is displayed as 2.34 when 'x' is 2.
+
+
+C++ STANDARD LIBRARIES
+
+<string>
+
+
+<cmath>
+sqrt(x) - square root of x (type double).
+pow(x,y) -  exponents; x is number, y is power (use of type double recommended).
+fabs(x) - absolute value of type float and double.
+floor(x) - round-down 'x'.
+ceil(x) - round-up 'x'.
+
+<cstdio>
+
+<cstdint>
+
+<ctime>
+
+<cstdlib>
+abs(x) - absolute value of type int (example, abs(-4) = 4).
+labs(x) - absolute value of type long.
+exit (0) - Exits program and prompts for closing.
+exit (1) - Exits the program immediately.
+//'exit (1)' is used for errors and 'exit (0)' for all other reasons.
+
+<iomanip>
+These are functions used after insertion operator '<<'.
+For example: endl, setw, setprecision.
+setw is just like 'width' member function but is used after '<<'.
+Example:
+	cout << 10 << setw(4) << 20 << setw(8) << 30 << endl;
+	will output the following:
+	10  20      30
+setprecision is just like member function 'precision' but is used after '<<'.
+Example:
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout << setprecision(2) << 30.2 << endl << setprecision(5) << 50.4 << endl;
+	will output the following:
+	30.20
+	50.40000
+
+<cctype>
+//Must be type "char"
+toupper('a') = 'A';
+tolower('A') = 'a';
+isupper: returns true if uppercase   isupper('a') is false	isupper('A') is true
+islower: returns true if lowercase   islower('A') is false	islower('a') is true
+isalpha: returns true if alphabet    isalpha('$') is false	isalpha('h') is true
+isdigit: returns true if digit	     isdigit('a') is false	isdigit('2') is true
+isspace: returns true if whitespace  isspace('4') is false	isspace(' ') is true 	
+		     					     isspace('\n') is true isspace('\t') is true
 
 
 RANDOM NUMBER GENERATION
@@ -47,22 +121,6 @@ int variable = (rand() % 6) + 1;
 //Replace 6 with any number 'n' to generate a random number from 0 to (n - 1).
 //Don't place both srand and rand in a loop. Generate srand only once. 
 //Generate rand when and you need a random number.
-
-
-TYPE CASTING
-//Converts 'int' type to 'double' type and vice-versa.
-Formula:
-int variable = static_cast<int>(double);
-double variable = static_cast<double>(int);
-
-Examples:
-double change;
-int variable = static_cast<int>(change);
-//Puts the value of 'change' in 'variable' and converts its type to 'int.'
-
-int change;
-double variable = static_cast<double>(change);
-//Puts the value of 'change' in 'variable' and converts its type to 'double.'
 
 
 OBJECTS
@@ -82,68 +140,3 @@ A 'type' with an Object as Variable is called a Class.
 In the above example, ifstream and ofstream are class with objects inStream
 and outStream as variables.
 The object's class determines which member functions the object has.
-
-
-DEBUNKING DECIMAL FORMULA
-cout.setf(ios::fixed)
-cout.setf(ios::showpoint)
-
-Here, 'setf' means 'set flags.'
-A 'flag' is an instruction to do something in one of TWO possible ways.
-If a flag is given as an argument to setf, then the flag tells the computer to
-write output to that stream in some specific way. 
-The flag 'ios::fixed' displays number in fixed-point notation.
-The flag 'ios::showpoint' displays the decimal point of the number.
-
-The word 'flag' is used for something that can be turned on or off.
-
-
-DISPLAY DECIMAL OUTPUT TO A SPECIFIC DECIMAL SPACE
-cout.setf(ios::fixed)
-cout.setf(ios::showpoint)
-cout.precision(x)             //'x' represents the number of decimal spaces.
-For Example:
-2.3452342 is displayed as 2.34 when 'x' is 2. That is,
-cout.setf(ios::fixed)
-cout.setf(ios::showpoint)
-cout.precision(2)
-
-
-MANIPULATORS
-//Library <iomanip>
-These are functions used after insertion operator <<.
-For example: endl, setw, setprecision.
-setw is just like 'width' member function but is used after <<.
-Example:
-	cout << 10 << setw(4) << 20 << setw(8) << 30 << endl;
-	will output the following:
-	10  20      30
-setprecision is just like member function 'precision' but is used after <<.
-Example:
-	cout.setf(ios::fixed);
-	cout.setf(ios::showpoint);
-	cout << setprecision(2) << 30.2 << endl << setprecision(5) << 50.4 << endl;
-	will output the following:
-	30.20
-	50.40000
-
-
-FUNCTIONS OF <cctype> LIBRARY
-//Must be type "char"
-toupper('a') = 'A';
-tolower('A') = 'a';
-isupper:  returns true if uppercase   isupper('a') is false	 isupper('A') is true
-islower:  returns true if lowercase   islower('A') is false	 islower('a') is true
-isalpha:  returns true if alphabet    isalpha('$') is false	 isalpha('h') is true
-isdigit:  returns true if digit	      isdigit('a') is false	 isdigit('2') is true
-isspace:  returns true if whitespace  isspace('4') is false	 isspace(' ') is true 	
-								      isspace('\n') is true	 isspace('\t') is true
-
-
-EXIT FUNCTION
-//Library <cstdlib>
-Argument either 0 or 1.
-exit (0); 	Exits program and prompts for closing.
-exit (1); 	Exits the program immediately.
-'exit (1)' is used for errors and 'exit (0)' for all other reasons.
-Parenthesis Necessary!
