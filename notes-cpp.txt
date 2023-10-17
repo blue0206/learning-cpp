@@ -11,6 +11,9 @@ bool - true or false.
 
 ESCAPE SEQUENCES (\)
 \n - new line.
+	 '\n' is a value of type char and can be stored in a variable of type char.
+	 "\n" is a string made up of exactly one character. Thus, it ain't type char
+	 	  and cannot be stored in type char.
 \t - tab.
 \a - alert.
 \\ - backslash(\).
@@ -18,7 +21,75 @@ single/double quote inside quote - \' or \".
 R" " - if there are many backslash(\) in a string.
 
 
-TYPE CASTING
+PRECEDENCE RULES (in decreasing order of precedence)
+1. Unary operators +, -, ++, --, and !
+2. Binary arithmetic operations *, /, %
+3. Binary arithmetic operations +, -
+4. Boolean operations <, >, <=, >=
+5. Boolean operations ==, !=
+6. Boolean operation &&
+7. Boolean operation ||
+
+
+MODIFIER
+const - const type IDENTIFIER{};
+		for example, const int NUMBER_ONE{};
+		the value of const variable will never change unless done so manually.
+
+LOOPS
+do-while loop - do
+				{
+					<code>
+				} while(condition)
+while - while(condition)
+		{
+		 	<code>
+		}
+for - for(init_variable; condition; increment/decrement)
+	  {
+	      <code>		
+	  }
+break; - ends the loop.
+continue; - goes back to the start of the loop and continues. 
+
+
+CONDITIONALS
+if-else if- else - if(condition)
+				   {
+						<code>
+				   }
+				   else if(condition)
+				   {
+						<code>
+				   }
+				   else:
+				   {
+						<code>
+				   }
+switch statement - switch (variable)
+				   {
+						case value:
+							<code>
+							break;
+						case value:
+							<code>
+							break;
+						default:
+							<code>
+				   }
+				   The value provided must be of same data type as variable.
+				   default case useful in case of no match, but not must.
+				   break; is necessary!
+				   default doesn't need break; statement.
+
+
+LOGIC
+and - &&; true if both conditions satisfy.
+or - ||; true even if one of conditions satisfy.
+not - !; reverses true to false and vice-versa.
+
+
+TYPE CONVERSION
 //Converts 'int' to 'double' and vice-versa.
 Formula:
 int variable = static_cast<int>(double);
@@ -32,6 +103,13 @@ int variable = static_cast<int>(change);
 int change;
 double variable = static_cast<double>(change);
 //Puts the value of 'change' in 'variable' and converts its type to 'double.'
+
+
+TYPE CASTING
+static_cast<type>(input) //use this to change to any type. Example,
+double answer;
+answer = static_cast<double>(9)/2
+This will give answer to be 4.5 rather than 4 (since 9 and 2 were type int).
 
 
 DEBUNKING DECIMAL FORMULA
@@ -55,10 +133,67 @@ For Example:
 2.3452342 is displayed as 2.34 when 'x' is 2.
 
 
+FLAGS
+.setf() - this function has the following flags:
+		      ios::fixed -- disables e-notation.
+			  				not set by default.
+							setting this unsets ios::scientific.
+			  ios::scientific -- enables e-notation.
+			  					 not set by default.
+								 setting this unsets ios::fixed.
+			  ios::showpoint -- not set by default.
+			  ios::showpos -- shows '+' before positive integers.
+			  				  not set by default.
+			  ios::right -- sets any width given to the right.
+			  				set by default.
+							unsets ios::left.
+			  ios::left -- sets any width given to the left.
+			  			   not set by default.
+						   unsets ios::right. 
+
+FUNCTIONS
+call by value - type function(type parameter, type parameter)
+				{
+					<code>
+				}
+				only the value of argument is used.
+Overloading a function name - if two or more function definitions have the same
+							  function name, it is called overloading.
+							  when overloading, either the no. of function
+							  parameters or the type of parameter must be 
+							  different.
+void function - return no value.
+				void function(parameter)
+				{
+					<code>
+					return;    //return is optional.
+				}
+				it works like an executable statement.
+call by reference - used to obtain input from user. 
+					returns the variable itself.
+					type function(type& variable)
+					{
+						cin >> variable
+						//the user input is assigned to variable.
+					}
+					the argument is variable and the whole variable is used.
+formal parameter - parameter used in function declaration and used in function
+				   body.
+argument - argument are filled in place of parameters when a function is called.
+mixed calls - function calls with both call by value and call by reference.
+
+
 C++ STANDARD LIBRARIES
 
-<string>
+<iostream>
+cin
+cout
+ios::app
+.get()
+.put()
 
+<string>
+char file_name[n] - stores a string of (n-1) characters.
 
 <cmath>
 sqrt(x) - square root of x (type double).
@@ -108,11 +243,26 @@ isdigit: returns true if digit	     isdigit('a') is false	isdigit('2') is true
 isspace: returns true if whitespace  isspace('4') is false	isspace(' ') is true 	
 		     					     isspace('\n') is true isspace('\t') is true
 
+<cassert>
+assert(boolean_expression);
+To disable assert without removing library, just add "#define NDEBUG" before
+#include <cassert>. That is,
+	#define NDEBUG
+	#include <cassert>
+
+<fstream>
+ifstream - define an input file stream variable.
+ofstream - define an output file stream variable.
+.get()
+.put()
+istream
+ostream
+
 
 RANDOM NUMBER GENERATION
 //Library <ctime> and <cstdlib>
 //Put the following code in body: srand (time(0));
-//Function srand used only once.
+//Function srand (seed random number generator) used only once.
 
 srand (time(0));
 int variable = (rand() % 6) + 1;
@@ -123,9 +273,61 @@ int variable = (rand() % 6) + 1;
 //Generate rand when and you need a random number.
 
 
+I/O STREAMS
+ifstream - type for an input file stream.
+ofstream - type for an output file stream.
+.open() - connects file stream to a file.
+		  for example, inStream.open("file.dat"); //inStream is variable of type
+		  ifstream.
+.close() - disconnects file stream from file.
+		   for example, inStream.close();
+.fail() - if a call to open fails, this function returns true. For example,
+		  inStream.open();
+		  inStream.fail();   //returns true if call to open fails.
+.open("file", ios::app) - opens the file without erasing the existing content.
+						  any input is hence, appended to the file. 
+						  example, inStream.open("file.dat", ios::app);
+Streams as function parameters - streams can be given as call by reference 
+								 parameters in functions.
+.get() - reads in one character of input and stores it in variable of type char.
+		 for example, char next;
+		 	 cin.get(next);	   //characters are stored in next, sent as input.
+		 It is a member function exclusive to input stream.
+.put() - takes in one argument of type char and outputs it.
+		 for example. char next;
+		     cout.put(next);    //characters are stored in next, sent as output.
+		 It is a member function exclusive to output stream.
+.putback() - takes in one argument of type char and places it back in the input
+			 stream.
+			 for example, char next;
+				cin.putback(next);  //character stored in next putback in input.
+			 It is a member function exclusive to input stream.
+istream - used as function call by reference parameter.
+		  can work as both cin and file-input stream.
+		  for example,
+		      function(istream& cin) can be used for cin.
+			  function(istream& inStream) can be used in case of file-input.
+		  to be defined using ifstream before use, that is: ifstream istream;
+ostream - used as function call by reference parameter.
+		  can work as both cout and file-output stream.
+		  for example,
+		      function(ostream& cout) can be used for cout.
+			  function(ostream& outStream) can be used in case of file-output.
+		  to be defined using ofstream before use, that is: ofstream ostream;
+Default Arguments - function(parameter=argument);
+					In case of istream, 
+						function(istream& inStream=cin);
+.eof() - member function exclusive to input stream. 
+		 returns true at end of file, takes no arguments, can be used for loops.
+		 for example, while(!inStream.eof())
+		 			  {
+					      <code>
+					  }
+
+
 OBJECTS
-A variable with a Function and Data associated with it is called an object.
-The functions are called 'member functions.'
+A variable with Functions and Data associated with it is called an object.
+The functions are called 'member functions' or methods.
 For example in the following declaration:
 ifstream inStream.open("infile.dat");
 ofstream outStream.open("outfile.dat");
