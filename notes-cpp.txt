@@ -183,6 +183,13 @@ argument - argument are filled in place of parameters when a function is called.
 mixed calls - function calls with both call by value and call by reference.
 
 
+ARRAYS
+Declaration - type variable[n];
+Indexed Variables - variable[0], variable[1], ..., variable[n]
+
+
+
+
 C++ STANDARD LIBRARIES
 
 <iostream>
