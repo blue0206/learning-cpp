@@ -7,6 +7,12 @@ double
 long double
 char - can hold any character.
 bool - true or false.
+auto - used in cases like range based for loop, arrays, etc. For example,
+	   for (auto i : array)
+	   {
+	       <code>
+	   }
+	   here, auto recognizes the data type of array and assigns the same to i.
 
 
 ESCAPE SEQUENCES (\)
@@ -49,6 +55,17 @@ for - for(init_variable; condition; increment/decrement)
 	  {
 	      <code>		
 	  }
+for loop (range based) - for (type variable : array)
+						 {
+							<code>
+						 }
+						 for example, int arr[] = {4, 5, 8, 16};
+						 for (int i : arr)
+						 {
+							cout << i;
+						 }
+						 The OUTPUT is: 45816.
+						 type name must be specified in this loop.
 break; - ends the loop.
 continue; - goes back to the start of the loop and continues. 
 
@@ -186,8 +203,51 @@ mixed calls - function calls with both call by value and call by reference.
 ARRAYS
 Declaration - type variable[n];
 Indexed Variables - variable[0], variable[1], ..., variable[n]
-
-
+Initializing array - example, int num[4] = {8, 11, 5, 16};
+for loop (range based) - int arr[] = {4, 5, 8, 16};
+						 for (int i : arr)
+						 {
+							cout << i;
+						 }
+						 The OUTPUT is: 45816.
+pass by reference - in the above for loop, changes to i won't change array.
+					However, if we use '&' to make i a reference parameter, we 
+					can change array by changing i. Here:
+					int arr[] = {4, 5, 8, 16};
+					for (int& i : arr)
+					{
+						i++;
+					}
+					for (auto i : arr)
+					{
+						cout << i;
+					}
+					The OUTPUT is: 56917
+array parameter - to provide a complete array as function parameter. Example:
+				  void input(int a[], array_size)
+				  {
+				      for (int i=0; i < array_size; i++)
+					  {
+					      cin >> a[i];
+					  }
+					  cout << "The last array index is " << (size - 1) << '\n\;
+				  }
+				  int main()
+				  {
+				      int arr[5], size{5};
+					  input(arr, size);
+				  }
+				  size must be declared equal to array size and must be passed 
+				  along with arr for this parameter to work.
+const array parameter - to prevent an array from being modified by a function,
+						add a const modifier to it in function declaration.
+						Example, consider the void function from previous
+						example and change it in following way:
+							void input(const int a[], array_size);
+						This would prevent the function from modifying the array
+						values and you'll still be able to insert values in it.
+						NOTE: once used for particular type, then it must be
+						used for every function using that type.
 
 
 C++ STANDARD LIBRARIES
