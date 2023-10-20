@@ -239,6 +239,22 @@ array parameter - to provide a complete array as function parameter. Example:
 				  }
 				  size must be declared equal to array size and must be passed 
 				  along with arr for this parameter to work.
+				  Similar to call by reference parameter except, the array size
+				  isn't passed to the function and hence needs to be passed 
+				  separately.
+
+partially filled arrays - they are called the same way as array parameter
+						  except, a third argument must be passed which tells 
+						  the number of index used. Example:
+						  
+						  void input(int a[], total_size, size_used)
+						  {
+						      <code>
+						  }
+						  NOTE: Depending on situation, you may call function
+						  either with all 3 parameters or without total_size
+						  parameter.
+
 const array parameter - to prevent an array from being modified by a function,
 						add a const modifier to it in function declaration.
 						Example, consider the void function from previous
@@ -248,6 +264,20 @@ const array parameter - to prevent an array from being modified by a function,
 						values and you'll still be able to insert values in it.
 						NOTE: once used for particular type, then it must be
 						used for every function using that type.
+
+multidimensional array - it is called an array of arrays.
+						 type array [nD1] [nD2] ... [nDn];
+						 where D is dimension and n is array size.
+						 In case of function call parameters, the size of D1 is
+						 not mentioned while size of all the other D is
+						 mentioned, and the size of D1 will be sent separately.
+						 for example,
+						 void input(int a[] [100], int size_D1)
+						 {
+						     <code>
+						 }
+						 This does make sense because a[0] is an array of [100]
+						 numbers.
 
 
 C++ STANDARD LIBRARIES
