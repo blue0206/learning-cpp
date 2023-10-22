@@ -1,14 +1,14 @@
-//Coded by Aayush Rai on 22 October 2023.
+//Coded by Aayush Rai on 21 October 2023.
 //This program takes numeric input via keyboard or file
 //and implements Bubble Sort to sort them in ascending order.
-//Will be updated in future .
+//The output is printed either in file or on screen.
 
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 
-const int MAX_ARRAY_SIZE {16};
-//Maximum possible array size.
+const int MAX_ARRAY_SIZE {101};
+//Maximum array size.
 
 void swap(int& num1, int& num2);
 //Swaps values of two array indices.
@@ -138,7 +138,8 @@ void ask_input_type(char& prompt)
     using namespace std;
 
     cout << "Enter 'f' for file input.\n"
-         << "Enter 'k' for manual input via keyboard.\n";
+         << "Enter 'k' for manual input via keyboard.\n"
+         << "(Use file input for sorting negative numbers.)\n";
     cin >> prompt;
 }
 
@@ -187,12 +188,20 @@ void screen_input_array(int a[], int max_size, int& size_used)
 {
     using namespace std;
 
-    cout << "Enter one by one for your list. Enter non-digit to stop.\n";
+    cout << "Enter numbers to be sorted one by one.\n"
+         << "Enter a negative number to stop.\n";
+
+    int num {};
     while (size_used < max_size)
     {
-        cout << "Enter number: ";
+        cout << "Enter Number: ";
         //Store input in array.
-        cin >> a[size_used];
+        cin >> num;
+        if (num < 0)
+        {
+            break;
+        }
+        a[size_used] = num;
         ++size_used;
     }
 }
@@ -201,7 +210,7 @@ void screen_output_sorted_array(int a[], int size)
 {
     using namespace std;
     
-    cout << "Sorted Array:\n";
+    cout << "\nSorted Array:\n";
     for (int index=0; index < size; index++)
     {
         cout << a[index] << '\n';
@@ -243,7 +252,6 @@ void loop(bool& lever)
         if (prompt == 'Y' || prompt == 'y')
         {
             //Keeps program loop running.
-            lever = true;
             break;
         }
         else if (prompt == 'N' || prompt == 'n')
