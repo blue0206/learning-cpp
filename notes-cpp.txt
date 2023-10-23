@@ -280,6 +280,25 @@ multidimensional array - it is called an array of arrays.
 						 numbers.
 
 
+STRINGS
+(There are two ways to use strings. This section discusses the first, primitive
+method: C string. Newer method discussed in Standard Libraries section below.)
+
+C string - string stored as an array of characters ending with '\0'.
+char s[10] - here, index 0-8 store characters and final index 9 stores '\0'.
+
+Functions of C string are in <cstring> library which is mentioned in standard 
+libraries section.
+
+cin.getline(string_variable, size) - Reads input including blanks, '\t' but NOT
+									 '\n'.
+									 Sentinel value is '\n' and size limit.
+									 getline is a part of input stream.
+atoi(Cstring) - Converts C String of digits into type int.
+atol(Cstring) - Converts C String of digits into type long.
+atof(Cstring) - Converts C String of digits into type double.
+
+
 C++ STANDARD LIBRARIES
 
 <iostream>
@@ -288,9 +307,53 @@ cout
 ios::app
 .get()
 .put()
+.getline()
+.ignore(character_size, character) - Everything stored in input buffer before
+									 this function is invoked is cleared of
+									 either the number of characters given as
+									 parameter, or the sentinel character given
+									 as second parameter, whichever comes first.
+									 
+									 For example, cin.ignore(1000, '\n');
+									 .ignore() clears the buffer of 1000 
+									 characters or till and including '\n', 
+									 whichever comes first.
+
+<cstring>
+(No need for 'using' directive.)
+strcpy(string_variable, cstring) - assigns value to a string. For example,
+						  		   char greet [8];
+						  		   strcpy(greet, "Hello");
+						  		   PITFALL: Doesn't make sure copying does not
+						  		   exceed size limit.
+strncpy(string_variable, cstring, size) - assigns value to a string and makes
+								  		  sure the assignment doesn't exceed 
+										  size limit. For example, 
+								 		  char greet[8];
+								 		  strncpy(greet, "hello", 7)
+								          Here, at most 7 characters will be 
+										  assigned, leaving room for '\0'.
+strcat(string_variable, cstring) - Concatenates a C string to a C string 
+								   variable.
+								   First argument must be C string variable.
+								   Second argument can be anything evaluating
+								   to C string (variable, quoted, etc.) 
+								   Does not check size limit.
+strncat(string_variable, cstring, size_limit) - Does the same as strcat but 
+												upto size limit.
+strlen(string) - Returns length of string ('\0' is not counted in length.)
+strcmp(string1, string2) - returns true if strings DO NOT match.
+strncmp(string1, string2, size) - same as strcmp but only compares upto the size
+								  limit provided.
+
 
 <string>
-char file_name[n] - stores a string of (n-1) characters.
+string name("name"); = string name = "name";
+getline(input_stream, string_variable) - Get input along with blanks, '\t'.
+									   - different from the member-function 
+									   	 .getline() discussed in input stream
+										 and C Strings.
+
 
 <cmath>
 sqrt(x) - square root of x (type double).
@@ -311,6 +374,9 @@ labs(x) - absolute value of type long.
 exit (0) - Exits program and prompts for closing.
 exit (1) - Exits the program immediately.
 //'exit (1)' is used for errors and 'exit (0)' for all other reasons.
+atoi(Cstring) - Converts C String of digits into type int.
+atol(Cstring) - Converts C String of digits into type long.
+atof(Cstring) - Converts C String of digits into type double.
 
 <iomanip>
 These are functions used after insertion operator '<<'.
@@ -354,6 +420,10 @@ ofstream - define an output file stream variable.
 .put()
 istream
 ostream
+getline() - Reads input including blanks, '\t' but NOT
+			'\n'.
+			Sentinel value is '\n' and size limit.
+			getline is a part of input stream.
 
 
 RANDOM NUMBER GENERATION
@@ -420,6 +490,10 @@ Default Arguments - function(parameter=argument);
 		 			  {
 					      <code>
 					  }
+getline() - Reads input including blanks, '\t' but NOT
+			'\n'.
+			Sentinel value is '\n' and size limit.
+			getline is a part of input stream.
 
 
 OBJECTS
