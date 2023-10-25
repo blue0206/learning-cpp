@@ -345,7 +345,9 @@ strlen(string) - Returns length of string ('\0' is not counted in length.)
 strcmp(string1, string2) - returns true if strings DO NOT match.
 strncmp(string1, string2, size) - same as strcmp but only compares upto the size
 								  limit provided.
-
+atoi(Cstring) - Converts C String of digits into type int.
+atol(Cstring) - Converts C String of digits into type long.
+atof(Cstring) - Converts C String of digits into type double.
 
 <string>
 string name("name"); = string name = "name";
@@ -353,7 +355,33 @@ getline(input_stream, string_variable) - Get input along with blanks, '\t'.
 									   - different from the member-function 
 									   	 .getline() discussed in input stream
 										 and C Strings.
-
+str[i] - returns read/write reference to character at index i.
+		 DOES NOT check for illegal index.
+str.at(i) - returns read/write reference to character at index i.
+			CHECKS for illegal index.
+str.substr(position, length) - Returns substring of str from position of size
+							   length.
+str.length() - returns the length of string.
+str.empty() - returns true if string is empty.
+str.insert(position, str2) - Inserts str2 into str at position.
+str.erase(position, length) - Removes substring from position of size length.
+							  Decreases original string length as the next 
+							  character in line occupies index of erased one.
+str.find(str1) - Returns index of first occurrence of str1 in str.
+				 If str1 is not found, special value string::npos is returned.
+str.find(str1, position) - Same as previous; search starts at position.
+str.find_first_of(str1, position) - returns index of first occurrence of any 
+									character in str1 starting at position in
+									str.
+str.find_first_not_of(str1, position) - Returns index of first instance in str 
+										of any character NOT IN str1.
+										Search starts at position.
+stof() - convert string to float.
+stod() - convert string to double.
+stoi() - convert string to int.
+stol() - convert string to long.
+to_string() - convert numeric type to string. Example, string s = to_string(50)
+			  sets s equal to the string "50".
 
 <cmath>
 sqrt(x) - square root of x (type double).
