@@ -280,6 +280,10 @@ multidimensional array - it is called an array of arrays.
 						 numbers.
 
 
+VECTORS
+
+
+
 STRINGS
 (There are two ways to use strings. This section discusses the first, primitive
 method: C string. Newer method discussed in Standard Libraries section below.)
@@ -452,6 +456,18 @@ getline() - Reads input including blanks, '\t' but NOT
 			'\n'.
 			Sentinel value is '\n' and size limit.
 			getline is a part of input stream.
+
+<vector>
+.push_back(value) - Adds value in vector index in a successive order.
+Initialization - vector<base_type> var_name = {value1, value2, ..., valueN};
+.size() - returns the number of elements in a vector.
+		  Returns value of type "unsigned int" which only allows non-negative 
+		  integer values.
+		  Necessary to convert it to type "int" for further use.
+vector<base_type> var_name(x) - Initializes x positions in vector to 0.
+								For example, vector<int> v(16);
+								v[0] to v[15] are created and initialized to 0.
+
 
 
 RANDOM NUMBER GENERATION
