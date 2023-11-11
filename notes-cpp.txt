@@ -467,7 +467,18 @@ Initialization - vector<base_type> var_name = {value1, value2, ..., valueN};
 vector<base_type> var_name(x) - Initializes x positions in vector to 0.
 								For example, vector<int> v(16);
 								v[0] to v[15] are created and initialized to 0.
-
+Size - No. of elements in vector.
+Capacity - No. of elements in vector with their memory allocated.
+.capacity() - Returns the capacity of vector.
+			  Capacity >= Size always.
+.reserve(x) - Sets the capacity to at least 'x' no. of elements. Example:
+			  vector_name.reserve(vector_name.size() + 10);
+			      sets the capacity of vector = size + 10.
+.resize() - resizes vector. Example: vector_name.resize(16);
+			If initial_size > 16:
+				Elements after first 16 elements lost.
+			If initial_size < 16:
+				New elements are initialized taking total element count to 16.
 
 
 RANDOM NUMBER GENERATION
