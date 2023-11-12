@@ -568,3 +568,50 @@ A 'type' with an Object as Variable is called a Class.
 In the above example, ifstream and ofstream are class with objects inStream
 and outStream as variables.
 The object's class determines which member functions the object has.
+
+POINTERS
+declaration - 	type *variable_name;
+
+pointer -	memory address of a variable.
+
+* - Dereferencing operator.
+	Produces the variable the pointer points to.
+
+& - Reference operator.
+	Produces the memory address of the variable.
+
+new operator -	creates dynamic variable & returns a pointer that points to it.
+				Example:p1 = new int;
+						sets pointer variable p1 = address of new variable,
+						which is accessible using *p1.
+				Terminates program in case of insufficient memory.
+
+Dynamic Variables -	variables without identifiers; nameless.
+					created and destroyed while the program runs.
+
+Automatic Variables -	Ordinary variables inside all functions including main()
+
+Global Variables -	Variables declared outside all functions (incl. main()).
+
+freestore -	memory reserved for dynamic variables.
+			also called 'heap'.
+			typically large.
+			recycling is a good practice (destroying unused dynamic variables.)
+
+delete operator-Syntax: delete pointer_variable;
+				Eliminates the dynamic variable the pointer_variable points to
+				and returns memory occupied by it to freestore.
+
+dangling pointers -	Pointer on which delete is used, becomes undefined.
+					DO NOT use (*) operator on these!
+					Make sure these pointers point to something before using (*)
+
+typedef -	assigns an alias to a type name and definition.
+			Normal placed in global scope.
+			Example for pointer variables:
+				typedef type* custom_type_name;
+				custome_type_name pointer_variable;
+			Example for variables:
+				typedef type custom_type_name;
+				custom_type_name variable_name;
+			Basically works like 'as' in Python.
