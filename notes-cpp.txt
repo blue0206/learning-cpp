@@ -615,3 +615,21 @@ typedef -	assigns an alias to a type name and definition.
 				typedef type custom_type_name;
 				custom_type_name variable_name;
 			Basically works like 'as' in Python.
+
+
+DYNAMIC ARRAYS
+array variables are actually pointer variables, except
+Array variable MUST NEVER be assigned a different memory address.
+
+declaration -	typedef type* CustomTypeName;
+				CustomTypeName pointer_variable;
+				pointer_variable = new type[size];
+				This creates a dynamic array.
+
+treatment -	Except for declaration, dynamic arrays are treated the same way as 
+			ordinary arrays.
+
+Deleting dynamic array -	delete []variable_name;
+							Including '[]' is MUST!
+							This deletes all the dynamic array elements and 
+							frees up freestore.
